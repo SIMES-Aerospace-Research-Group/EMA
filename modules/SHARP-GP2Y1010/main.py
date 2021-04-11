@@ -4,7 +4,7 @@ from mcp3008 import MCP3008
 sharp_pin = 21
 sharp_channel = 1
 
-ADC = MCP3008(0, 0)
+ADC = MCP3008()
 
 sharpPM10 = sharpPM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC)
 
