@@ -11,10 +11,10 @@ import Adafruit_BMP.BMP085 as BMP085 # --- BMP085 ---
 # Importing Classes and Methods from local files
 from mcp3008 import MCP3008
 from sharpPM10 import sharpPM10
-from mq import *
+from mq import * # Gas sensor
 import lcd_driver
 
-import MySQLdb # This is really necessary? I's just to pass the data to database.
+import MySQLdb # This is really necessary? It's just to pass the data to database.
 import config
 
 degree_symbol = u"\u00b0"
@@ -64,9 +64,9 @@ while True:
     
     sql = ("INSERT INTO readings (temp, humidity, pressure, dust, lpg, co, smoke)\
             VALUES ({0:0.1f},{1:0.1f},{2:0.2f},{3:0.3f},{4:0.4f},{5:0.4f},{6:0.4f})").format(
-            temp_dht or 0,
+            temp_dht or 0, # --- From DHT ---
             humidity or 0, # --- From DHT ---
-            pressure/100 or 0, # --- From DHT ---
+            pressure/100 or 0, # This is really necessary? 'Cause we don't use the pressure
             dust_density or 0,
             gas['GAS_LPG'] or 0,
             gas['CO'] or 0,
