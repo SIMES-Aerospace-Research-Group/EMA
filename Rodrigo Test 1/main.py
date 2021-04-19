@@ -19,7 +19,6 @@ import config
 
 degree_symbol = u"\u00b0"
 
-
 print('starting...')
 
 dht_model = 22
