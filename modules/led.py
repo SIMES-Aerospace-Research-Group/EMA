@@ -74,44 +74,35 @@ print("""Ensure the following GPIO connections: R-11, G-13, B-15
 Colors: Red, Green, Blue, Yellow, Cyan, Magenta, and White
 Use the format: color on/color off""")
 
-def main():
+def main(cmd):
     while True:
-        cmd = raw_input("-->")
-
-
         if cmd == "red on":
-            redOn()
+            return redOn()
         elif cmd == "red off":
-            redOff()
+            return redOff()
         elif cmd == "green on":
-            greenOn()
+            return greenOn()
         elif cmd == "green off":
-            greenOff()
+            return greenOff()
         elif cmd == "blue on":
-            blueOn()
+            return blueOn()
         elif cmd == "blue off":
-            blueOff()
+            return blueOff()
         elif cmd == "yellow on":
-            yellowOn()
+            return yellowOn()
         elif cmd == "yellow off":
-            yellowOff()
+            return yellowOff()
         elif cmd == "cyan on":
-            cyanOn()
+            return cyanOn()
         elif cmd == "cyan off":
-            cyanOff()
+            return cyanOff()
         elif cmd == "magenta on":
-            magentaOn()
+            return magentaOn()
         elif cmd == "magenta off":
-            magentaOff()
+            return magentaOff()
         elif cmd == "white on":
-            whiteOn()
+            return whiteOn()
         elif cmd == "white off":
-            whiteOff()
+            return whiteOff()
         else:
-            print("Not a valid command")
-
-
-    return
-
-
-main()
+            return ("Not a valid command")
