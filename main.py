@@ -53,11 +53,7 @@ try:
     # ADDING RGB LED ... CHECK ADAFRUIT RGB DOCUMENTATION
     greenOn()
 
-    # Reading dust density with sharpPM10
-    dust_density = sharpPM10.read()
-
-    # Getting temperature and humidity
-    temperature, humidity = initHDC()
+    dust_density = sharpPM10.read() # Reading dust density with sharpPM10
 
     # Printing out the data
     printLCD(f'{HDCtemp(2)}  {HDChum(2)}')

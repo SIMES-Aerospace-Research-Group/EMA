@@ -12,13 +12,11 @@ import os
 sys.path.append('./SDL_Pi_HDC1080_Python3')
 hdc1080 = SDL_Pi_HDC1080.SDL_Pi_HDC1080()
 
-"""
-# Opening csv file and writing the headers
-with open('HDC-1080.csv', 'w', newline='') as file:
-	write = csv.writer(file)
-	write.writerow(['Time', 'Temperature(C)', 'Humidity'])
-"""
+def HDCtemp(roundto):
+	temperature = round(hdc1080.readTemperature(), roundto)
+	return temperature
 
+<<<<<<< HEAD
 """
 # Setting counter in 0 value
 HH = 0
@@ -57,3 +55,8 @@ def initHDC():
 		time.sleep(1)
 
 		return temperature, humidity
+=======
+def HDChum(roundto):
+	humidity = round(hdc1080.readHumidity(), roundto)
+	return humidity
+>>>>>>> 3065fde40c47b1c5c8e1a3728286a0aad92293b6
