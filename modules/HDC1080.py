@@ -1,12 +1,6 @@
 # Importing libraries
-import sys
-from colorama import Fore, Back, Style
 import SDL_Pi_HDC1080
-from datetime import *
-import time
-import csv
 import sys
-import os
 
 # Setting main path to HDC1080
 sys.path.append('./SDL_Pi_HDC1080_Python3')
