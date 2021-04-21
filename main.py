@@ -1,68 +1,76 @@
+## Importing system libraries
 import sys
-
-# Importing pip libraries
 import wiringpi
 import spidev
 from numpy import median
-import wiringpi
-import Adafruit_DHT # This device read temperature and humedity. I't reallt necessary? We'll to use the HDC1080 sensor
-import Adafruit_BMP.BMP085 as BMP085 # --- BMP085 ---
-
-# Importing Classes and Methods from local files
-from mcp3008 import MCP3008
-from sharpPM10 import sharpPM10
-import lcd_driver
-
+import wiringpi as wipi
 import config
+from time import *
 
-degree_symbol = u"\u00b0"
+## Importing Classes and Methods from local files
+from modules import MCP3008
+from modules import HDC1080
+from modules import LCD1602
+from modules import RGB_LED
+from modules import SHARPPM10
 
-print('starting...')
+# degree_symbol = u"\u00b0"
 
+## Pines setup
 sharp_pin = 21
 sharp_channel = 1
 
-green_led = 6
-yellow_led = 13
+redPin = 11
+greenPin = 13
+bluePin = 15
+
+## Setup of modules
+initLCD()
+
+# ADD LED ... CHECK ADAFRUIT RGB DOCUMENTATION
+blink(redPin)
+blink(greenPin)
+blink(bluePin)
+
+ADC = MCP3008(0, 0) # CE0
+
+sharpPM10 = sharpPM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC)
+
+yellowOn() # Pin turned to yellow
+for i in (30): # 0.2 seconds * 30 = 6 seconds
+    printLCD('[ ok ] Tomando datos .  ')
+    sleep(.2)
+    printLCD('[ ok ] Tomando datos .. ')
+    sleep(.2)
+    printLCD('[ ok ] Tomando datos ...')
+    sleep(.2)
+yellowOff() # Turn off the yellow led
 
 try:
-    wiringpi.wiringPiSetupGpio() 
-    wiringpi.pinMode(green_led, 1)
-    wiringpi.pinMode(yellow_led, 1)
+    # Printing on display
+    lcd.lcd_print("Success")
 
-    wiringpi.digitalWrite(yellow_led, 1) # power on the yellow LED
-    wiringpi.digitalWrite(green_led, 1) # power on the green LED
+    # ADDING RGB LED ... CHECK ADAFRUIT RGB DOCUMENTATION
+    greenOn()
 
-    Adafruit_BMP085 = BMP085.BMP085() # --- BMP085 ---
-    ADC = MCP3008(0, 0) # CE0
-    # MQ = MQ(adc=ADC, analog_channel=mq_channel)
-    sharpPM10 = sharpPM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC)
-    lcd = lcd_driver.lcd()
-except:
-    wiringpi.digitalWrite(green_led, 0) # power off the green LED
-
-while True:
-    wiringpi.digitalWrite(yellow_led, 1) # power on the yellow LED
-    lcd.lcd_print(['Reading sensors...'])
-    
-
-    humidity, temp_dht = Adafruit_DHT.read_retry(dht_model, dht_pin) # (sensor_type, pin_number) # Here is the HDC1080!
-    pressure = Adafruit_BMP085.read_pressure() # --- BMP085 --- !
+    # Reading dust density with sharpPM10
     dust_density = sharpPM10.read()
-    
-    try:
-        print('success')
-        wiringpi.digitalWrite(yellow_led, 0) # power off the yellow LED
-        
-        # Print de HDC-1080
-        lcd.lcd_print([
-            ('Temp: {0:0.1f}C').format(temp_dht or 0),
-            ('Humidity: {0:0.1f}%').format(humidity or 0)
-        ])
-        
-    except:
-        lcd.lcd_print(['Proces Unsuccessful'])
-        print('Process Unsuccessful')
-        wiringpi.digitalWrite(green_led, 0) # power off the green LED
 
+    # Getting temperature and humidity
+    temperature, humidity = initHDC()
 
+    # Printing out the data
+    printLCD(f'{HDCtemp(2)}  {HDChum(2)}')
+
+    # Printing on display
+    printLCD([
+        (f"Hum: {humidity}"),
+        (f"Tem: {temperature}"),
+        (f"Polvo: {dust_density}")
+    ])
+
+except:
+    lcd.lcd_print(['Process Unsuccessful'])
+    turnOff(redPin)
+    turnOff(greenPin)
+    turnOff(bluePin)

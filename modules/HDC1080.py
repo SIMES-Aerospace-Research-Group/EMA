@@ -47,13 +47,6 @@ def initHDC():
 			writer = csv.writer(file)
 			writer.writerow([current_time, hdc1080.readTemperature(), hdc1080.readHumidity()])
 	"""
-	"""
-		# Printing output and coloring it
-		print (Fore.RED + "|-------" + Fore.WHITE + f"{HH}:{MM}:{SS}" + Fore.RED + "-------|")
-		print (Fore.WHITE + f'Temperature = {temperature} C°')
-		print (Fore.WHITE + f'Humidity = {humidity} %')
-		print (Fore.RED + "|----------------------|\n\n" + Style.RESET_ALL)
-	"""
 		# Printing without color
 		outTemp = (f'Temperature = {temperature} C°')
 		outHum = (f'Humidity = {humidity} %')
@@ -62,3 +55,5 @@ def initHDC():
 		# Upping the counter
 		# SS += 1
 		time.sleep(1)
+
+		return temperature, humidity
