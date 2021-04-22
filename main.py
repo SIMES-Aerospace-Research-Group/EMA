@@ -35,29 +35,21 @@ blink(bluePin)
 
 ADC = MCP3008(0, 0) # CE0
 
-sharpPM10 = sharpPM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC)
+sharpPM10 = sharpPM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC) # Setting sharpPM10
 
-
-yellowOn()
-limit = 30
-print('\t[ ? ] Tomando datos ...')
-
-"""
 yellowOn() # Pin turned to yellow
 for i in (30): # 0.2 seconds * 30 = 6 seconds
-    printLCD('[ ? ] Tomando datos .  ')
+    printLCD('[ ? ] Recibiendo datos .  ')
     sleep(.2)
-    printLCD('[ ? ] Tomando datos .. ')
+    printLCD('[ ? ] Recibiendo datos .. ')
     sleep(.2)
-    printLCD('[ ? ] Tomando datos ...')
+    printLCD('[ ? ] Recibiendo datos ...')
     sleep(.2)
 yellowOff() # Turn off the yellow led
 
-printLCD("[ ok ]") # Printing on display
-
 greenOn() # ADDING RGB LED ... CHECK ADAFRUIT RGB DOCUMENTATION
-
-"""
+printLCD("[ ok ] Cargando datos ...") # Printing on display
+sleep(2)
 
 while True:
     try:
@@ -67,10 +59,28 @@ while True:
             (f"Tem: {HDChum(2)}\n"), # Humidity
             (f"Polvo: {sharpPM10.read()}) # Dust density
         )
-        sleep(3)
-    except:
-        printLCD('Process Unsuccessful')
+        sleep(1)
+
+    except: # If something of above fail
+        printLCD('[ ! ] PROCESO FALLIDO')
+        redOn()
         sleep(3)
         turnOff(redPin)
         turnOff(greenPin)
         turnOff(bluePin)
+
+"""
+# 0 - 1500
+if dust < supIdealValue: # Ideal case
+    greenon()
+
+elif infRegularValue <= dust < supRegularValue: # Regular case
+    yellowOn()
+
+else: # Worst case
+    redOn()
+
+|| [(0%) ----good---- ](30%)[ ----regular---- ](70%)[ ----bad---- (100%)] ||
+
+
+"""
