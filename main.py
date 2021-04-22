@@ -70,7 +70,6 @@ while True:
         turnOff(bluePin)
 
 """
-# 0 - 1500
 if dust < supIdealValue: # Ideal case
     greenon()
 
