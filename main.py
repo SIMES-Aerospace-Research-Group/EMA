@@ -57,7 +57,7 @@ while True:
         printLCD(
             (f"Hum: {HDCtemp(2)}"), # Temperature
             (f"Tem: {HDChum(2)}\n"), # Humidity
-            (f"Polvo: {sharpPM10.read()}) # Dust density
+            (f"Polvo: {sharpPM10.read()}") # Dust density
         )
         sleep(1)
 
