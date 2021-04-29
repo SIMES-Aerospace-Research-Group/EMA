@@ -28,7 +28,7 @@ bluePin = 15
 ## Setup of modules
 initLCD()
 
-# ADD LED ... CHECK ADAFRUIT RGB DOCUMENTATION
+# CHECK ADAFRUIT RGB LED DOCUMENTATION
 blink(redPin)
 blink(greenPin)
 blink(bluePin)
