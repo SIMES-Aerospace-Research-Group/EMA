@@ -11,7 +11,7 @@ import sys
 from modules import SHARPPM10
 from modules import MCP3008
 from modules import HDC1080
-from modules import LCD1602
+# from modules import LCD1602
 from modules import RGB_LED
 
 # degree_symbol = u"\u00b0"
@@ -26,7 +26,7 @@ bluePin = 15
 # Ground = 9
 
 ## Setup of modules
-initLCD()
+# initLCD()
 
 # CHECK ADAFRUIT RGB LED DOCUMENTATION
 blink(redPin)
@@ -36,7 +36,7 @@ blink(bluePin)
 ADC = MCP3008(0, 0) # CE0
 
 sharpPM10 = sharpPM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC) # Setting sharpPM10
-
+"""
 yellowOn() # Pin turned to yellow
 for i in (30): # 0.2 seconds * 30 = 6 seconds
     printLCD('[ ? ] Recibiendo datos .  ')
@@ -50,7 +50,9 @@ yellowOff() # Turn off the yellow led
 greenOn() # ADDING RGB LED ... CHECK ADAFRUIT RGB DOCUMENTATION
 printLCD("[ ok ] Cargando datos ...") # Printing on display
 sleep(2)
+"""
 
+"""
 while True:
     try:
         # Printing out the display
@@ -68,6 +70,7 @@ while True:
         turnOff(redPin)
         turnOff(greenPin)
         turnOff(bluePin)
+"""
 
 """
 if dust < supIdealValue: # Ideal case
@@ -83,3 +86,9 @@ else: # Worst case
 
 
 """
+
+greenOn()
+
+print(HDCtemp(2))
+print((HDChum(2))
+print(sharpPM10.read())
