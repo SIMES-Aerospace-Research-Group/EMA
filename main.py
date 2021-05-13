@@ -8,11 +8,9 @@ import spidev
 import sys
 
 ## Importing Classes and Methods from local files
-from modules import SHARPPM10
-from modules import MCP3008
-from modules import HDC1080
-# from modules import LCD1602
-from modules import RGB_LED
+from modules import HDC_1080, SHARP_PM10, MCP_3008, 
+from modules import LCD_1602, RGB_LED
+                    
 
 # degree_symbol = u"\u00b0"
 
