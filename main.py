@@ -7,9 +7,8 @@ import sys
 
 from modules.MCP_3008 import mcp3008
 from modules.SHARP_PM10 import sharpPM10
-from modules.LCD_1602 import Base, Scroll, Backlight
+from modules.LCD_1602 import Base, Scroll, BacklightOn, BacklightOff, clear, 
 
-#from modules.LCD_1602 import Base, Scroll, Backlight
 #from modules.HDC_1080 import HDCtemp, HDChum
 
 # from modules.RGB_LED import ...
@@ -19,10 +18,33 @@ sharp_channel = 1
 ADC = mcp3008(0, 0) # CE0
 sharpPM10 = sharpPM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC)
 dust_density = sharpPM10.read()
-print(dust_density)
+
+print('Testing Base text!')
+sleep(1)
+Base('Heeyy ...', 1)
+Base('k pasa chavales!', 2)
+sleep(3)
+clear()
+
+print('Testing Scroll text!')
+sleep(1)
+Scroll('May the force be with you young padawan !!', 1)
+sleep(3)
+
+print('Testing Backlight text!')
+sleep(1)
+for i in range(2):
+    BacklightOn()
+    sleep(.5)
+    BacklightOff()
+    sleep(.5)
+Base('Hello there', 1)
+BacklightOn()
+sleep(1)
+BacklightOff()
+Base('General Kenobi..', 2)
+sleep(1)
 exit()
-
-
 
 # degree_symbol = u"\u00b0"
 
