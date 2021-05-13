@@ -1,7 +1,9 @@
+from setups import SDL_Pi_HDC1080
 import sys
+import os
 
 # Setting main path to HDC1080
-sys.path.append('./drivers/SDL_Pi_HDC1080_Python3')
+sys.path.append('./setups/SDL_Pi_HDC1080')
 hdc1080 = SDL_Pi_HDC1080()
 
 # Getting temperature
