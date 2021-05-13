@@ -17,12 +17,12 @@ from modules.SHARP_PM10 import sharpPM10
 # sys.path.append('./MCP_3008_Python3')
 # sys.path.append('./SHARP_PM10_Python3')
 
-ADC = MCP_3008.MCP_3008(0, 0) # CE0
 sharp_pin = 21
 sharp_channel = 1
+ADC = mcp3008(0, 0) # CE0
 sharpPM10 = sharpPM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC)
 
-print(sharpPM10.read())
+sharpPM10.read()
 # sharpm10 = SHARP_PM10.SHARP_PM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC)
 # print(sharpm10.read())
 
