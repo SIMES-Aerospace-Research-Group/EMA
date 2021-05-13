@@ -17,7 +17,7 @@ from time import sleep
 
 display = drivers.Lcd()
 
-def base():
+def Base():
     # Main body of code
     try:
         while True:
@@ -35,7 +35,7 @@ def base():
         print("Cleaning up!")
         display.lcd_clear()
 
-def scroll():
+def Scroll():
     # Main body of code
     try:
         print("Press CTRL + C to stop this script!")
@@ -74,7 +74,7 @@ def scroll():
         print("Cleaning up!")
         display.lcd_clear()
 
-def backlight():
+def Backlight():
     # Main body of code
     try:
         print("Press CTRL + C to quit program")
