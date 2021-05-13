@@ -1,6 +1,6 @@
 import wiringpi
 
-class SHARP_PM10:
+class sharpPM10:
     def __init__(self, led_pin, pm10_pin, adc, sampling_time=280, delta_time=40, sleep_time=9680):
         if led_pin is None:
             raise ValueError('led pin number is missing!')

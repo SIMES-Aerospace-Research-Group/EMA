@@ -9,21 +9,22 @@ import sys
 
 ## Importing Classes and Methods from local files
 #from modules.MCP_3008 import MCP3008.open, MCP3008.read, MCP3008.close
-from modules import MCP_3008
-from modules import SHARP_PM10
-#from modules.SHARP_PM10 import sharpPM10.read, sharpPM10.readSequence
+from modules.MCP_3008 import mcp3008
+from modules.SHARP_PM10 import sharpPM10
 
 #from modules.LCD_1602 import Base, Scroll, Backlight
 #from modules.HDC_1080 import HDCtemp, HDChum
-sys.path.append('./MCP_3008_Python3')
-sys.path.append('./SHARP_PM10_Python3')
+# sys.path.append('./MCP_3008_Python3')
+# sys.path.append('./SHARP_PM10_Python3')
 
 ADC = MCP_3008.MCP_3008(0, 0) # CE0
-sharp_channel = 1
 sharp_pin = 21
+sharp_channel = 1
+sharpPM10 = sharpPM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC)
 
-sharpm10 = SHARP_PM10.SHARP_PM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC)
-print(sharpm10.read())
+print(sharpPM10.read())
+# sharpm10 = SHARP_PM10.SHARP_PM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC)
+# print(sharpm10.read())
 
 exit()
 
