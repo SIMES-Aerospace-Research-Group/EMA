@@ -9,9 +9,12 @@ import sys
 
 ## Importing Classes and Methods from local files
 #from modules.MCP_3008 import MCP3008.open, MCP3008.read, MCP3008.close
+from modules import MCP_3008
 #from modules.SHARP_PM10 import sharpPM10.read, sharpPM10.readSequence
+
 from modules.LCD_1602 import Base, Scroll, Backlight
 from modules.HDC_1080 import HDCtemp, HDChum
+
 # from modules.RGB_LED import ...
 
 # degree_symbol = u"\u00b0"
@@ -20,9 +23,7 @@ from modules.HDC_1080 import HDCtemp, HDChum
 sharp_pin = 21
 sharp_channel = 1
 
-redPin = 11
-greenPin = 13
-bluePin = 15
+
 # Ground = 9
 
 ## Setup of modules
