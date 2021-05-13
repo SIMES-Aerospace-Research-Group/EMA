@@ -1,6 +1,6 @@
 from time import *
 import sys
-from os import *
+from os import system as install
 
 confirm = input('''
 Los siguientes packetes serán instalados:\n
@@ -11,7 +11,7 @@ Los siguientes packetes serán instalados:\n
  ''')
 
 EMA = 'https://github.com/Rodrigo-Flores/EMA'
-install = ['sudo apt update && sudo apt upgrade',
+packages = ['sudo apt update && sudo apt upgrade',
     'sudo apt install software-properties-common -y',
     'sudo apt-get install git-all -y',
     'sudo apt install python3-pip -y',
@@ -21,13 +21,5 @@ install = ['sudo apt update && sudo apt upgrade',
     'sudo sh EMA/modules/drivers/lcd/install.sh'
     ]
 
-for package in install:
-    system(package)
-
-
-The following packages will be installed:
-  kicad kicad-demos kicad-footprints kicad-libraries kicad-symbols kicad-templates libfreeimage3
-  libglew2.1 libjxr0 libngspice0 libocct-data-exchange-7.4 libocct-foundation-7.4
-  libocct-modeling-algorithms-7.4 libocct-modeling-data-7.4 libocct-ocaf-7.4
-  libocct-visualization-7.4 libtbb2 xsltproc
-Do you want to continue? [Y/n] 
+for package in packages:
+    install(package)
