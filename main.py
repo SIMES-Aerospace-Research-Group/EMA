@@ -1,5 +1,3 @@
-## Importing system libraries
-# from numpy import median
 import wiringpi as wipi
 from time import *
 import wiringpi
@@ -7,30 +5,24 @@ import config
 import spidev
 import sys
 
-## Importing Classes and Methods from local files
-#from modules.MCP_3008 import MCP3008.open, MCP3008.read, MCP3008.close
 from modules.MCP_3008 import mcp3008
 from modules.SHARP_PM10 import sharpPM10
+from modules.LCD_1602 import Base, Scroll, Backlight
 
 #from modules.LCD_1602 import Base, Scroll, Backlight
 #from modules.HDC_1080 import HDCtemp, HDChum
-# sys.path.append('./MCP_3008_Python3')
-# sys.path.append('./SHARP_PM10_Python3')
+
+# from modules.RGB_LED import ...
 
 sharp_pin = 21
 sharp_channel = 1
 ADC = mcp3008(0, 0) # CE0
 sharpPM10 = sharpPM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC)
-
-sharpPM10.read()
-# sharpm10 = SHARP_PM10.SHARP_PM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC)
-# print(sharpm10.read())
-
+dust_density = sharpPM10.read()
+print(dust_density)
 exit()
 
 
-
-# from modules.RGB_LED import ...
 
 # degree_symbol = u"\u00b0"
 

@@ -10,13 +10,13 @@ GPIO.setwarnings(False)
 GPIO.cleanup()
 
 def greenOn():
-    GPIO.setmode(GPIO.BOARD)
+    GPIO.setmode(GPIO.BCM)
 	GPIO.setup(greenPin, GPIO.OUT)
 
     while True:
-        GPIO.output(7, True)
+        GPIO.output(greenPin, True)
         time.sleep(1)
-        GPIO.output(7, False)
+        GPIO.output(greenPin, False)
         time.sleep(1)
 
 greenOn()
