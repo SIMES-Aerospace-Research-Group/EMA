@@ -10,25 +10,30 @@ import sys
 ## Importing Classes and Methods from local files
 #from modules.MCP_3008 import MCP3008.open, MCP3008.read, MCP3008.close
 from modules import MCP_3008
+from modules import SHARP_PM10
 #from modules.SHARP_PM10 import sharpPM10.read, sharpPM10.readSequence
 
 #from modules.LCD_1602 import Base, Scroll, Backlight
 #from modules.HDC_1080 import HDCtemp, HDChum
-
 sys.path.append('./MCP_3008_Python3')
-mcp3008 = MCP_3008.MCP_3008()
+sys.path.append('./SHARP_PM10_Python3')
 
-mcp3008.open()
-print(mcp3008.read())
-mcp3008.close()
+ADC = MCP_3008.MCP_3008(0, 0) # CE0
+sharp_channel = 1
+sharp_pin = 21
+
+sharpm10 = SHARP_PM10.SHARP_PM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC)
+print(sharpm10.read())
+
+exit()
+
+
 
 # from modules.RGB_LED import ...
 
 # degree_symbol = u"\u00b0"
 
 ## Pines GRPIO setup
-sharp_pin = 21
-sharp_channel = 1
 
 
 # Ground = 9
@@ -36,14 +41,8 @@ sharp_channel = 1
 ## Setup of modules
 # initLCD()
 
-# CHECK ADAFRUIT RGB LED DOCUMENTATION
-blink(redPin)
-blink(greenPin)
-blink(bluePin)
 
-ADC = MCP3008(0, 0) # CE0
 
-sharpPM10 = sharpPM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC) # Setting sharpPM10
 """
 yellowOn() # Pin turned to yellow
 for i in (30): # 0.2 seconds * 30 = 6 seconds
