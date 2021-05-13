@@ -64,8 +64,6 @@ class SDL_Pi_HDC1080:
         # public functions
 
         def readTemperature(self):
-
-
                 s = [HDC1080_TEMPERATURE_REGISTER] # temp
                 s2 = bytearray( s )
                 HDC1080_fw.write( s2 )

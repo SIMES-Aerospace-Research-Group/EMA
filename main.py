@@ -12,8 +12,15 @@ import sys
 from modules import MCP_3008
 #from modules.SHARP_PM10 import sharpPM10.read, sharpPM10.readSequence
 
-from modules.LCD_1602 import Base, Scroll, Backlight
-from modules.HDC_1080 import HDCtemp, HDChum
+#from modules.LCD_1602 import Base, Scroll, Backlight
+#from modules.HDC_1080 import HDCtemp, HDChum
+
+sys.path.append('./MCP_3008_Python3')
+mcp3008 = MCP_3008.MCP_3008()
+
+mcp3008.open()
+print(mcp3008.read())
+mcp3008.close()
 
 # from modules.RGB_LED import ...
 
