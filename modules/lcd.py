@@ -5,7 +5,7 @@
 # Created by Matthew Timmons-Brown for The Raspberry Pi Guy YouTube channel
 
 # Import necessary libraries for communication and display use
-import drivers
+import setups.lcd.settings as drivers
 from time import sleep
 
 # Load the driver and set it to "display"
