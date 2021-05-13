@@ -1,5 +1,5 @@
 ## Importing system libraries
-from numpy import median
+# from numpy import median
 import wiringpi as wipi
 from time import *
 import wiringpi
@@ -90,5 +90,5 @@ else: # Worst case
 greenOn()
 
 print(HDCtemp(2))
-print((HDChum(2))
+print(HDChum(2))
 print(sharpPM10.read())
