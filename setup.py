@@ -3,7 +3,9 @@ import sys
 from os import *
 
 confirm = input('''
-The following packages will be installed:
+The following packages will be installed:\n
+    update and upgrade system, git-all, python 3, pip 3, EMA Official repository
+
  ''')
 
 EMA = 'https://github.com/Rodrigo-Flores/EMA'
@@ -26,5 +28,4 @@ The following packages will be installed:
   libglew2.1 libjxr0 libngspice0 libocct-data-exchange-7.4 libocct-foundation-7.4
   libocct-modeling-algorithms-7.4 libocct-modeling-data-7.4 libocct-ocaf-7.4
   libocct-visualization-7.4 libtbb2 xsltproc
-After this operation, 324 MB of additional disk space will be used.
 Do you want to continue? [Y/n] 
