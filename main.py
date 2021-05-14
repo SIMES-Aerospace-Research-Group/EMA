@@ -5,55 +5,63 @@ from modules.HDC_1080 import HDCtemp, HDChum
 # from modules.RGB_LED import ...
 
 from time import *
+import random
+
+ADC = mcp3008(0, 0) # CE0
+sharpPM10 = sharpPM10(led_pin=21, pm10_pin=1, adc=ADC)
+
+def data():
+    BacklightOn()
+    #  Preparando configuraciones de sensores
+
+    #  Enviando datos al display LCD
+    # Base('----------------', 1)
+    clear()
+    Base(f'PM2.5: {sharpPM10.read()}', 1)
+    Base(f'PM10: {sharpPM10.read()}', 2)
+
+    sleep(2)
+    BacklightOff()
+    clear()
+    BacklightOn()
+    Base(f'Temp: {HDCtemp(3)} {chr(223)}C', 1)
+    Base(f'Hume: {HDChum(3)} %', 2)
+    sleep(2)
 
 def init():
     clear()
+    BacklightOn()
     for i in range(4):
         BacklightOff()
-        sleep(.4)
+        sleep(.05)
         BacklightOn()
-        sleep(.4)
+        sleep(.05)
     
-    Scroll('Estación de Monitoreo Ambiental', 2)
-    sleep(2)
+    Scroll('Estacion de Monitoreo', 1)
     clear()
+    Base("      Ambiental      ", 2)
+    sleep(2)
     Base('      EMA       ', 1)
     sleep(2)
     clear()
 
     for i in range(4):
         BacklightOff()
-        sleep(.3)
+        sleep(.05)
         BacklightOn()
-        sleep(.3)
+        sleep(.05)
 
-    Scroll('Leyendo datos de sensores ... ', 1)
-
-def data():
-    #  Preparando configuraciones de sensores
-    ADC = mcp3008(0, 0) # CE0
-    sharpPM10 = sharpPM10(led_pin=21, pm10_pin=1, adc=ADC)
-
-    #  Enviando datos al display LCD
-    # Base('----------------', 1)
-    clear()
-    Base(f'PM2.5: {sharpPM10.read()}', 1)
-    Base(f'PM10: {sharpPM10.read()}, 2')
-
-    BacklightOff()
-    sleep(.5)
-    clear()
-    BacklightOn()
-
-    Base(f'Temp: {HDCtemp(1)} C°', 1)
-    Base(f'Hume: {HDChum}%', 2)
+    Scroll('Leyendo datos de sensores ...', 1)
 
 def main():
     init()
     clear()
-    while True:
-        data()
-
+    try:
+        while True:
+            data()
+    except KeyboardInterrupt:
+        clear()
+        exit()
 if __name__ == '__main__':
     main()
 
