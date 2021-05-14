@@ -16,5 +16,3 @@ def HDChum(roundto):
 	humidity = round(hdc1080.readHumidity(), roundto)
 	return humidity
 
-print(HDChum(2))
-print(HDCtemp(2))

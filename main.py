@@ -15,7 +15,7 @@ def init():
         sleep(.4)
     
     Scroll('Estación de Monitoreo Ambiental', 2)
-    sleep(.5)
+    sleep(2)
     clear()
     Base('      EMA       ', 1)
     sleep(2)
@@ -27,7 +27,7 @@ def init():
         BacklightOn()
         sleep(.3)
 
-    Scroll('Leyendo datos de sensores ... ')
+    Scroll('Leyendo datos de sensores ... ', 1)
 
 def data():
     #  Preparando configuraciones de sensores
