@@ -61,6 +61,7 @@ def main():
             data()
     except KeyboardInterrupt:
         clear()
+        print('\n')
         exit()
 if __name__ == '__main__':
     main()
