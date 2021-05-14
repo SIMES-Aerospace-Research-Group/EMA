@@ -12,10 +12,7 @@ sharpPM10 = sharpPM10(led_pin=21, pm10_pin=1, adc=ADC)
 
 def data():
     BacklightOn()
-    #  Preparando configuraciones de sensores
 
-    #  Enviando datos al display LCD
-    # Base('----------------', 1)
     clear()
     Base(f'PM2.5: {sharpPM10.read()}', 1)
     Base(f'PM10: {sharpPM10.read()}', 2)
@@ -38,8 +35,8 @@ def init():
         sleep(.05)
     
     Scroll('Estacion de Monitoreo', 1)
+    Scroll("            Ambiental", 2)
     clear()
-    Base("      Ambiental      ", 2)
     sleep(2)
     Base('      EMA       ', 1)
     sleep(2)
@@ -68,41 +65,16 @@ if __name__ == '__main__':
 
 
 
+'''
 
+3000 +     = VERY POOR
+1050-3000  = POOR
+300-1050   = FAIR
+150-300    = GOOD
+75-150     = VERY GOOD
+0-75       = EXCELLENT
 
-
-
-
-
-
-
-
-# print('Testing Base text!')
-# sleep(1)
-# Base('Heeyy ...', 1)
-# Base('k pasa chavales!', 2)
-# sleep(3)
-# clear()
-
-# print('Testing Scroll text!')
-# sleep(1)
-# Scroll('May the force be with you young padawan !!', 1)
-# sleep(3)
-# clear()
-
-# print('Testing Backlight text!')
-# sleep(1)
-# for i in range(2):
-#     BacklightOn()
-#     sleep(.5)
-#     BacklightOff()
-#     sleep(.5)
-# Base('Hello there', 1)
-# BacklightOn()
-# sleep(1)
-# BacklightOff()
-# Base('General Kenobi..', 2)
-# sleep(1)
+'''
 
 """
 yellowOn() # Pin turned to yellow

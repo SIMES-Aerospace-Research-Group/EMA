@@ -37,7 +37,7 @@ class sharpPM10:
         calc_voltage = vo_measured * (5.0 / 1024)
 
         # linear eqaution taken from http://www.howmuchsnow.com/arduino/airquality/ (Chris Nafis (c) 2012)
-        dust_density = 170 * calc_voltage - 0.1
+        dust_density = 0.17 * calc_voltage - 0.1
 
         return dust_density
 
