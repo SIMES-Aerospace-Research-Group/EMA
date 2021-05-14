@@ -1,62 +1,99 @@
-import wiringpi as wipi
-from time import *
-import wiringpi
-import config
-import spidev
-import sys
-
 from modules.MCP_3008 import mcp3008
 from modules.SHARP_PM10 import sharpPM10
-from modules.LCD_1602 import Base, Scroll, BacklightOn, BacklightOff, clear, 
-
-#from modules.HDC_1080 import HDCtemp, HDChum
-
+from modules.LCD_1602 import Base, Scroll, BacklightOn, BacklightOff, clear
+from modules.HDC_1080 import HDCtemp, HDChum
 # from modules.RGB_LED import ...
 
-sharp_pin = 21
-sharp_channel = 1
-ADC = mcp3008(0, 0) # CE0
-sharpPM10 = sharpPM10(led_pin=sharp_pin, pm10_pin=sharp_channel, adc=ADC)
-dust_density = sharpPM10.read()
+from time import *
 
-print('Testing Base text!')
-sleep(1)
-Base('Heeyy ...', 1)
-Base('k pasa chavales!', 2)
-sleep(3)
-clear()
-
-print('Testing Scroll text!')
-sleep(1)
-Scroll('May the force be with you young padawan !!', 1)
-sleep(3)
-
-print('Testing Backlight text!')
-sleep(1)
-for i in range(2):
-    BacklightOn()
+def init():
+    clear()
+    for i in range(4):
+        BacklightOff()
+        sleep(.4)
+        BacklightOn()
+        sleep(.4)
+    
+    Scroll('Estación de Monitoreo Ambiental', 2)
     sleep(.5)
+    clear()
+    Base('      EMA       ', 1)
+    sleep(2)
+    clear()
+
+    for i in range(4):
+        BacklightOff()
+        sleep(.3)
+        BacklightOn()
+        sleep(.3)
+
+    Scroll('Leyendo datos de sensores ... ')
+
+def data():
+    #  Preparando configuraciones de sensores
+    ADC = mcp3008(0, 0) # CE0
+    sharpPM10 = sharpPM10(led_pin=21, pm10_pin=1, adc=ADC)
+
+    #  Enviando datos al display LCD
+    # Base('----------------', 1)
+    clear()
+    Base(f'PM2.5: {sharpPM10.read()}', 1)
+    Base(f'PM10: {sharpPM10.read()}, 2')
+
     BacklightOff()
     sleep(.5)
-Base('Hello there', 1)
-BacklightOn()
-sleep(1)
-BacklightOff()
-Base('General Kenobi..', 2)
-sleep(1)
-exit()
+    clear()
+    BacklightOn()
 
-# degree_symbol = u"\u00b0"
+    Base(f'Temp: {HDCtemp(1)} C°', 1)
+    Base(f'Hume: {HDChum}%', 2)
 
-## Pines GRPIO setup
+def main():
+    init()
+    clear()
+    while True:
+        data()
 
-
-# Ground = 9
-
-## Setup of modules
-# initLCD()
+if __name__ == '__main__':
+    main()
 
 
+
+
+
+
+
+
+
+
+
+
+# print('Testing Base text!')
+# sleep(1)
+# Base('Heeyy ...', 1)
+# Base('k pasa chavales!', 2)
+# sleep(3)
+# clear()
+
+# print('Testing Scroll text!')
+# sleep(1)
+# Scroll('May the force be with you young padawan !!', 1)
+# sleep(3)
+# clear()
+
+# print('Testing Backlight text!')
+# sleep(1)
+# for i in range(2):
+#     BacklightOn()
+#     sleep(.5)
+#     BacklightOff()
+#     sleep(.5)
+# Base('Hello there', 1)
+# BacklightOn()
+# sleep(1)
+# BacklightOff()
+# Base('General Kenobi..', 2)
+# sleep(1)
 
 """
 yellowOn() # Pin turned to yellow
@@ -108,9 +145,3 @@ else: # Worst case
 
 
 """
-
-greenOn()
-
-print(HDCtemp(2))
-print(HDChum(2))
-print(sharpPM10.read())

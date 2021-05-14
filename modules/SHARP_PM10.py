@@ -1,4 +1,5 @@
 import wiringpi
+from numpy import median
 
 class sharpPM10:
     def __init__(self, led_pin, pm10_pin, adc, sampling_time=280, delta_time=40, sleep_time=9680):

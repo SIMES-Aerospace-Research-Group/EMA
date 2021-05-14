@@ -3,8 +3,9 @@ from time import *
 
 def installer():
     EMA = 'https://github.com/Rodrigo-Flores/EMA'
-    packages = ['sudo apt update && sudo apt upgrade',
+    packages = ['sudo apt-get update && sudo apt-get upgrade -y',
     'sudo apt install software-properties-common -y',
+    'sudo apt-get install libatlas-base-dev -y',
     'sudo apt-get install git-all -y',
     'sudo apt install python3-pip -y',
     f'sudo rm -rf EMA && git clone {EMA}', 
@@ -12,6 +13,7 @@ def installer():
     'sudo apt-get update',
     'sudo sh EMA/modules/setups/lcd/install.sh'
     ]
+
 
     for package in packages:
         install(package)
@@ -27,3 +29,9 @@ def main():
         installer()
     else:
         exit()    
+
+# sudo -s
+# echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+# chmod 644 /etc/resolv.conf
+# exit
+# ping google.com
