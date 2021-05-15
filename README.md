@@ -22,13 +22,19 @@
 # Uso
 ---
 ## Instalación
-### Ingresar al respositorio:
-`cd EMA/`
+Ingresar al respositorio:
+```bash
+cd EMA/
+```
 
-### Instalar librerias requeridas:
-`pip3 install -r requirements.txt --force`
+Instalar librerias requeridas:
+```bash
+pip3 install -r requirements.txt --force
+```
 
-### Ejecutar el programa principal:
-`python3 main.py`
+Ejecutar el programa principal:
+```bash
+python3 main.py
+```
 
 
