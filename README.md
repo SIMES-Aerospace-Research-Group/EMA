@@ -15,7 +15,7 @@
 **`LED RGB`** L.E.D Red Green Blue  
 
 # Uso
----
+
 ## Instalación
 Ingresar al respositorio:
 ```bash
