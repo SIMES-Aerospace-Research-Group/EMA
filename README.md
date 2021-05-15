@@ -4,20 +4,11 @@
 ### EMA, es un dispositivo que permite ver la cantidad de material particulado en el aire, como polvo, humo y gases. Además, también puede medir la temperatura y humedad que hay en el ambiente del mismo lugar en el que se encuentra.
 
 ## Módulos utilizados
-1. SHARPPM10 
-> Sensor del material particulado en el aire
-
-2. MCP3008
-> Conversor de señal analógica a digital
-
-3. HDC1080
-> Sensor de temperatura y humedad
-
-4. DISPLAY LCD 16x02
-> Pantalla líquida de 16x02
-
-5. LED RGB
-> L.E.D Red Green Blue
+**`SHARPPM10`** Sensor del material particulado en el aire
+**`MCP3008`** Conversor de señal analógica a digital
+**`HDC1080`** Sensor de temperatura y humedad
+**`DISPLAY LCD 16x02`** Pantalla líquida de 16x02
+**`LED RGB`** L.E.D Red Green Blue
 
 # Uso
 ---
