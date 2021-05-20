@@ -8,7 +8,7 @@ from time import *
 import random
 
 ADC = mcp3008(0, 0) # CE0
-sharpPM10 = sharpPM10(led_pin=21, pm10_pin=1, adc=ADC)
+sharpPM10 = sharpPM10(led_pin=40, pm10_pin=1, adc=ADC)
 
 def data():
     BacklightOn()
