@@ -1,4 +1,4 @@
-# Estación de Monitoreo Ambiental (EMA)
+# Estación de Monitoreo Ambiental (EMA) - debug version
 > version 1.0
 
 ### EMA, es un dispositivo que permite medir la cantidad de material particulado en el aire, como polvo, humo y gases. Además, también puede medir la temperatura y humedad que hay en el ambiente del mismo lugar en el que se encuentra, graficándolo constantemente en su pantalla LCD y Dashboard.
